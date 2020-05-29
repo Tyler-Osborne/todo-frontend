@@ -1,23 +1,30 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Todo from "../Models/Todo";
+import { getTodos } from "../Services/TodoService";
 
-class TodoList extends Component {
-    state = {
-        todos: [],
-        loading: true
-    }
+interface TodoListState {
+  todos: Todo[];
+  loading: boolean;
+}
 
-    async componentDidMount() {
-        
-    }
+class TodoList extends Component<any, TodoListState> {
+  state = {
+    todos: [],
+    loading: true,
+  };
 
-    render() {
-        return (
-            <div>
-                <h2>This is a Todo list</h2>
-            </div>
-        );
-    };
+  async componentDidMount() {
+    let todos = await getTodos();
+    this.setState({ todos });
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>This is a todo list</h2>
+      </div>
+    );
+  }
 }
 
 export default TodoList;
