@@ -6,6 +6,7 @@ const base_url = 'https://tyler-spring-todos.herokuapp.com/api/todos';
 export const getTodos = async () => {
     try {
         let response = await axios.get(base_url);
+        console.log("Response", response)
         return response.data;
     } catch (error) {
         return error;
