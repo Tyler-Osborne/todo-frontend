@@ -1,6 +1,7 @@
 import React from "react";
 import Todo from "../Models/Todo";
 import { Modal, Form, Switch, Input, Button } from "antd";
+import { updateTodoById } from "../Services/TodoService";
 
 const layout = {
   labelCol: { span: 8 },
@@ -14,18 +15,23 @@ interface TodoUpdateModalProps {
   visible: boolean;
   onCancel: () => void;
   todo: Todo;
+  reload: () => void;
 }
 
 const TodoUpdateModal: React.FC<TodoUpdateModalProps> = ({
   visible,
   todo,
   onCancel,
+  reload,
 }) => {
   const [form] = Form.useForm();
 
   const onUpdate = (values: any) => {
     values.id = todo.id;
     console.log(values);
+    updateTodoById(values)
+      .then(() => reload())
+      .then(() => onCancel());
   };
 
   return (

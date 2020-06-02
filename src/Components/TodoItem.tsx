@@ -67,7 +67,11 @@ class TodoItem extends Component<TodoProp, TodoState> {
           <p>{this.props.todo.description}</p>
           <p>
             Complete?{" "}
-            <Checkbox defaultChecked={this.props.todo.complete} disabled />
+            <Checkbox
+              defaultChecked={this.props.todo.complete}
+              checked={this.props.todo.complete}
+              disabled
+            />
           </p>
           <Button
             type="primary"
@@ -98,6 +102,7 @@ class TodoItem extends Component<TodoProp, TodoState> {
             visible={this.state.updateModalVisible}
             todo={this.props.todo}
             onCancel={this.handleCancel}
+            reload={this.props.reload}
           />
         </Card>
       </Cel>
