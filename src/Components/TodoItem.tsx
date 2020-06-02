@@ -68,9 +68,7 @@ class TodoItem extends Component<TodoProp, TodoState> {
             title="Basic Modal"
             visible={this.state.modalVisible}
             onOk={this.handleOk}
-            onCancel={this.handleCancel}
-            okButtonProps={{ disabled: false }}
-            cancelButtonProps={{ disabled: false }}>
+            onCancel={this.handleCancel}>
                 <p className="styles.dangerDeleteTodo">In order to delete a todo, it must be complete</p>
             </Modal>
         </Card>
